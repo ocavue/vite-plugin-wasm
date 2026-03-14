@@ -46,7 +46,8 @@ type VitePackages =
     }
   | {
       vite: typeof import("./vite7/node_modules/vite");
-      vitePluginLegacy: (typeof import("./vite7/node_modules/@vitejs/plugin-legacy/dist/index.js"))["default"];
+      // @ts-ignore: this doesn't work since we're using CommonJS module in tsconfig.json
+      vitePluginLegacy: (typeof import("./vite7/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite7/node_modules/vite-plugin-top-level-await"))["default"];
     }
   | {
