@@ -52,8 +52,10 @@ type VitePackages =
   | {
       vite: typeof import("./vite8/node_modules/vite/dist/node/index.js");
       vitePluginLegacy: (typeof import("./vite8/node_modules/@vitejs/plugin-legacy/dist/index.js"))["default"];
-      // vite-plugin-top-level-await v1.6.0 doesn't support Vite 8
-      vitePluginTopLevelAwait: undefined
+      // "vite-plugin-top-level-await" v1.6.0 doesn't support Vite 8 because it imports "rollup" directly. But "vite" v8 doesn't
+      // depend on "rollup" anymore.
+      // See https://github.com/Menci/vite-plugin-top-level-await/blob/v1.6.0/src/index.ts#L3
+      vitePluginTopLevelAwait: undefined;
     };
 
 async function buildAndStartProdServer(
@@ -84,7 +86,7 @@ async function buildAndStartProdServer(
   }
 
   const resultArray = Array.isArray(result) ? result : [result];
-  const output = resultArray.map(item => item.output).flat()
+  const output = resultArray.map(item => item.output).flat();
 
   const app = express();
   let port = 0;
@@ -209,7 +211,7 @@ const runTestWithRetry = async (...args: Parameters<typeof runTest>) => {
       break;
     } catch (e) {
       // Retry on Playwright Request Error
-      if (e != null && typeof e === 'object' && '_type' in e && e._type === "Request" || i !== MAX_RETRY - 1) {
+      if ((e != null && typeof e === "object" && "_type" in e && e._type === "Request") || i !== MAX_RETRY - 1) {
         await new Promise(r => setTimeout(r, RETRY_WAIT));
         continue;
       }
