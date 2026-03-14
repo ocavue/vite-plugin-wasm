@@ -9,7 +9,6 @@ import type { AddressInfo } from "net";
 import { jest } from "@jest/globals";
 import { firefox, chromium } from "playwright";
 
-import type { RollupOutput } from "rollup";
 import vitePluginWasm from "../src/index.js";
 
 import express from "express";
@@ -47,14 +46,12 @@ type VitePackages =
     }
   | {
       vite: typeof import("./vite7/node_modules/vite");
-      // @ts-expect-error: @vitejs/plugin-legacy v7.0.0 doesn't have type export
-      vitePluginLegacy: (typeof import("./vite7/node_modules/@vitejs/plugin-legacy"))["default"];
+      vitePluginLegacy: (typeof import("./vite7/node_modules/@vitejs/plugin-legacy/dist/index.js"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite7/node_modules/vite-plugin-top-level-await"))["default"];
     }
   | {
-      vite: typeof import("./vite8/node_modules/vite");
-      // @ts-expect-error: @vitejs/plugin-legacy v8.0.0 doesn't have type export
-      vitePluginLegacy: (typeof import("./vite8/node_modules/@vitejs/plugin-legacy"))["default"];
+      vite: typeof import("./vite8/node_modules/vite/dist/node/index.js");
+      vitePluginLegacy: (typeof import("./vite8/node_modules/@vitejs/plugin-legacy/dist/index.js"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite8/node_modules/vite-plugin-top-level-await"))["default"];
     };
 
@@ -85,14 +82,14 @@ async function buildAndStartProdServer(
     throw new TypeError("Internal error in Vite");
   }
 
-  const buildResult =
-    "output" in result ? result : ({ output: result.flatMap(({ output }) => output) } as RollupOutput);
+  const resultArray = Array.isArray(result) ? result : [result];
+  const output = resultArray.map(item => item.output).flat()
 
   const app = express();
   let port = 0;
 
   const bundle = Object.fromEntries(
-    buildResult.output.map(item => [item.fileName, item.type === "chunk" ? item.code : item.source])
+    output.map(item => [item.fileName, item.type === "chunk" ? item.code : item.source])
   );
 
   app.use((req, res) => {
@@ -211,7 +208,7 @@ const runTestWithRetry = async (...args: Parameters<typeof runTest>) => {
       break;
     } catch (e) {
       // Retry on Playwright Request Error
-      if (e._type === "Request" || i !== MAX_RETRY - 1) {
+      if (e != null && typeof e === 'object' && '_type' in e && e._type === "Request" || i !== MAX_RETRY - 1) {
         await new Promise(r => setTimeout(r, RETRY_WAIT));
         continue;
       }
