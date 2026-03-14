@@ -21,7 +21,7 @@ export default function wasm(): any {
     configResolved(config) {
       runningInVitest = config.plugins.some(plugin => plugin.name === "vitest");
 
-      if (viteMajorVersion <= 7) {
+      // if (viteMajorVersion <= 7) {
         if (config.optimizeDeps?.esbuildOptions) {
           // https://github.com/Menci/vite-plugin-wasm/pull/11
           if (!config.optimizeDeps.esbuildOptions.plugins) {
@@ -32,7 +32,7 @@ export default function wasm(): any {
           // Allow usage of top-level await during development build (not affacting the production build)
           config.optimizeDeps.esbuildOptions.target = "esnext";
         }
-      }
+      // }
     },
     resolveId(id) {
       if (id === wasmHelper.id) {
