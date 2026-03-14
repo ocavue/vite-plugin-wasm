@@ -6,7 +6,7 @@ import assert from "assert";
 import { describe, it } from "../test-helpers.mjs";
 import { firefox, chromium } from "playwright";
 
-import vitePluginWasm from "../exports/import.mjs";
+import defaultVitePluginWasm from "../exports/import.mjs";
 
 import express from "express";
 import waitPort from "wait-port";
@@ -15,8 +15,13 @@ import { temporaryDirectory } from "tempy";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
+function loadVitePluginWasm(vitePackages) {
+  return vitePackages.vitePluginWasm || defaultVitePluginWasm;
+}
+
 async function buildAndStartProdServer(tempDir, vitePackages, transformTopLevelAwait, modernOnly) {
   const { vite, vitePluginLegacy, vitePluginTopLevelAwait } = vitePackages;
+  const vitePluginWasm = loadVitePluginWasm(vitePackages);
 
   const result = await vite.build({
     root: __dirname,
@@ -28,7 +33,7 @@ async function buildAndStartProdServer(tempDir, vitePackages, transformTopLevelA
     plugins: [
       ...(modernOnly ? [] : [vitePluginLegacy()]),
       vitePluginWasm(),
-      ...(transformTopLevelAwait ? [vitePluginTopLevelAwait()] : [])
+      ...((transformTopLevelAwait && vitePluginTopLevelAwait) ? [vitePluginTopLevelAwait()] : [])
     ],
     logLevel: "error"
   });
@@ -71,6 +76,7 @@ async function buildAndStartProdServer(tempDir, vitePackages, transformTopLevelA
 
 async function startDevServer(tempDir, vitePackages) {
   const { vite } = vitePackages;
+  const vitePluginWasm = loadVitePluginWasm(vitePackages);
 
   const devServer = await vite.createServer({
     root: __dirname,
@@ -159,7 +165,7 @@ const runTestWithRetry = async (...args) => {
       break;
     } catch (e) {
       // Retry on Playwright Request Error
-      if (e._type === "Request" || i !== MAX_RETRY - 1) {
+      if ((e != null && typeof e === "object" && "_type" in e && e._type === "Request") || i !== MAX_RETRY - 1) {
         await new Promise(r => setTimeout(r, RETRY_WAIT));
         continue;
       }
