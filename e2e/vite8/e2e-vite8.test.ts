@@ -1,4 +1,4 @@
-import { runTests } from "../e2e.ts";
+import { runTests } from "../e2e";
 
 runTests(8, async () => ({
   // @ts-ignore: this doesn't work in old node.js version
