@@ -6,6 +6,10 @@
   "private": true,
   "devDependencies": {
     "@vitejs/plugin-legacy": "^8",
-    "vite": "8"
+    "vite": "8",
+    "cpy-cli": "^5.0.0"
+  },
+  "scripts": {
+    "install": "mkdir -p node_modules/vite-plugin-wasm && cpy ../../package.json node_modules/vite-plugin-wasm/package.json && cpy ../../exports node_modules/vite-plugin-wasm/exports && cpy ../../dist node_modules/vite-plugin-wasm/dist"
   }
 }
