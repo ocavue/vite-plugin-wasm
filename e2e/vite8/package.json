@@ -12,6 +12,6 @@
     "rimraf": "^5.0.0"
   },
   "scripts": {
-    "install": "rimraf node_modules/vite-plugin-wasm && make-dir node_modules/vite-plugin-wasm && cpy ../../package.json node_modules/vite-plugin-wasm/package.json && cpy ../../exports node_modules/vite-plugin-wasm/exports && cpy ../../dist node_modules/vite-plugin-wasm/dist"
+    "install": "rimraf node_modules/vite-plugin-wasm && make-dir node_modules/vite-plugin-wasm && cpy --cwd ../.. package.json node_modules/vite-plugin-wasm/ && cpy --cwd ../.. exports node_modules/vite-plugin-wasm/ && cpy --cwd ../.. dist node_modules/vite-plugin-wasm/"
   }
 }
