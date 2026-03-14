@@ -1,9 +1,12 @@
 import type { Plugin } from "vite";
+import { version } from "vite";
 
 import { esbuildPlugin } from "./esbuild-plugin";
 import { generateGlueCode } from "./wasm-parser";
 import * as wasmHelper from "./wasm-helper";
 import { createBase64UriForWasm } from "./util";
+
+const [viteMajorVersion] = version.split(".").map(Number);
 
 export default function wasm(): any {
   // Vitest reports { ssr: false } to plugins but execute the code in SSR
@@ -15,6 +18,7 @@ export default function wasm(): any {
     configResolved(config) {
       runningInVitest = config.plugins.some(plugin => plugin.name === "vitest");
 
+      if (viteMajorVersion <= 7) {
       if (config.optimizeDeps?.esbuildOptions) {
         // https://github.com/Menci/vite-plugin-wasm/pull/11
         if (!config.optimizeDeps.esbuildOptions.plugins) {
@@ -24,7 +28,7 @@ export default function wasm(): any {
 
         // Allow usage of top-level await during development build (not affacting the production build)
         config.optimizeDeps.esbuildOptions.target = "esnext";
-      }
+      }}
     },
     resolveId(id) {
       if (id === wasmHelper.id) {
