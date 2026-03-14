@@ -9,9 +9,6 @@ import type { AddressInfo } from "net";
 import { jest } from "@jest/globals";
 import { firefox, chromium } from "playwright";
 
-import type { RollupOutput } from "rollup";
-import vitePluginWasm from "../src/index.js";
-
 import express from "express";
 import waitPort from "wait-port";
 import mime from "mime";
@@ -24,33 +21,58 @@ type VitePackages =
       vite: typeof import("./vite2/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite2/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite2/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite3/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite3/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite3/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite4/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite4/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite4/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite5/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite5/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite5/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite6/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite6/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite6/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite7/node_modules/vite");
-      // @ts-expect-error: @vitejs/plugin-legacy v7.0.0 doesn't have type export
+      // @ts-ignore: this doesn't work since we're using CommonJS module in tsconfig.json
       vitePluginLegacy: (typeof import("./vite7/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite7/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
+    }
+  | {
+      vite: typeof import("./vite8/node_modules/vite/dist/node/index.js");
+      vitePluginLegacy: (typeof import("./vite8/node_modules/@vitejs/plugin-legacy/dist/index.js"))["default"];
+      // "vite-plugin-top-level-await" v1.6.0 doesn't support Vite 8 because it imports "rollup" directly. But "vite" v8 doesn't
+      // depend on "rollup" anymore.
+      // See https://github.com/Menci/vite-plugin-top-level-await/blob/v1.6.0/src/index.ts#L3
+      vitePluginTopLevelAwait?: undefined;
+      vitePluginWasm?: (typeof import("../src/index.js"))["default"];
     };
+
+async function loadVitePluginWasm(vitePackages: VitePackages) {
+  const { vitePluginWasm: localVitePluginWasm } = vitePackages;
+
+  if (localVitePluginWasm) {
+    return localVitePluginWasm;
+  }
+  const mod = await import("../exports/import.mjs");
+  return mod.default;
+}
 
 async function buildAndStartProdServer(
   tempDir: string,
@@ -59,6 +81,7 @@ async function buildAndStartProdServer(
   modernOnly: boolean
 ): Promise<string> {
   const { vite, vitePluginLegacy, vitePluginTopLevelAwait } = vitePackages;
+  const vitePluginWasm = await loadVitePluginWasm(vitePackages);
 
   const result = await vite.build({
     root: __dirname,
@@ -70,7 +93,7 @@ async function buildAndStartProdServer(
     plugins: [
       ...(modernOnly ? [] : [vitePluginLegacy()]),
       vitePluginWasm(),
-      ...(transformTopLevelAwait ? [vitePluginTopLevelAwait()] : [])
+      ...((transformTopLevelAwait && vitePluginTopLevelAwait) ? [vitePluginTopLevelAwait()] : [])
     ],
     logLevel: "error"
   });
@@ -79,14 +102,14 @@ async function buildAndStartProdServer(
     throw new TypeError("Internal error in Vite");
   }
 
-  const buildResult =
-    "output" in result ? result : ({ output: result.flatMap(({ output }) => output) } as RollupOutput);
+  const resultArray = Array.isArray(result) ? result : [result];
+  const output = resultArray.map(item => item.output).flat();
 
   const app = express();
   let port = 0;
 
   const bundle = Object.fromEntries(
-    buildResult.output.map(item => [item.fileName, item.type === "chunk" ? item.code : item.source])
+    output.map(item => [item.fileName, item.type === "chunk" ? item.code : item.source])
   );
 
   app.use((req, res) => {
@@ -117,6 +140,7 @@ async function buildAndStartProdServer(
 
 async function startDevServer(tempDir: string, vitePackages: VitePackages): Promise<string> {
   const { vite } = vitePackages;
+  const vitePluginWasm = await loadVitePluginWasm(vitePackages);
 
   const devServer = await vite.createServer({
     root: __dirname,
@@ -205,7 +229,7 @@ const runTestWithRetry = async (...args: Parameters<typeof runTest>) => {
       break;
     } catch (e) {
       // Retry on Playwright Request Error
-      if (e._type === "Request" || i !== MAX_RETRY - 1) {
+      if ((e != null && typeof e === "object" && "_type" in e && e._type === "Request") || i !== MAX_RETRY - 1) {
         await new Promise(r => setTimeout(r, RETRY_WAIT));
         continue;
       }
