@@ -1,3 +1,6 @@
+// We need to copy the dist file manually to let jest to pick the correct
+// version of "vite". If mixed versions of "vite" are used, vite v8 will throw
+// errors.
 async function run() {
   const fs = await import("node:fs");
   const path = await import("node:path");
