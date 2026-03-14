@@ -2,9 +2,9 @@ import { runTests } from "../e2e";
 
 runTests(8, async () => ({
   // @ts-ignore: this doesn't work since we're using CommonJS module in tsconfig.json
-  vite: await import("./node_modules/vite/dist/node/index.js"),
+  vite: await import("vite"),
   // @ts-ignore: this doesn't work since we're using CommonJS module in tsconfig.json
-  vitePluginLegacy: (await import("./node_modules/@vitejs/plugin-legacy/dist/index.js")).default,
+  vitePluginLegacy: (await import("@vitejs/plugin-legacy")).default,
 
-  vitePluginWasm: (await import("./node_modules/vite-plugin-wasm")).default
+  vitePluginWasm: (await import("vite-plugin-wasm")).default
 }));
