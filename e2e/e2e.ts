@@ -23,32 +23,38 @@ type VitePackages =
       vite: typeof import("./vite2/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite2/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite2/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite3/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite3/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite3/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite4/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite4/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite4/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite5/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite5/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite5/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite6/node_modules/vite");
       vitePluginLegacy: (typeof import("./vite6/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite6/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite7/node_modules/vite");
       // @ts-ignore: this doesn't work since we're using CommonJS module in tsconfig.json
       vitePluginLegacy: (typeof import("./vite7/node_modules/@vitejs/plugin-legacy"))["default"];
       vitePluginTopLevelAwait: (typeof import("./vite7/node_modules/vite-plugin-top-level-await"))["default"];
+      vitePluginWasm?: undefined;
     }
   | {
       vite: typeof import("./vite8/node_modules/vite/dist/node/index.js");
@@ -57,6 +63,7 @@ type VitePackages =
       // depend on "rollup" anymore.
       // See https://github.com/Menci/vite-plugin-top-level-await/blob/v1.6.0/src/index.ts#L3
       vitePluginTopLevelAwait?: undefined;
+      vitePluginWasm?: typeof import("../src/index.js")["default"];
     };
 
 async function buildAndStartProdServer(
@@ -65,7 +72,7 @@ async function buildAndStartProdServer(
   transformTopLevelAwait: boolean,
   modernOnly: boolean
 ): Promise<string> {
-  const { vite, vitePluginLegacy, vitePluginTopLevelAwait } = vitePackages;
+  const { vite, vitePluginLegacy, vitePluginTopLevelAwait, vitePluginWasm: vitePluginWasm_ } = vitePackages;
 
   const result = await vite.build({
     root: __dirname,
@@ -76,7 +83,7 @@ async function buildAndStartProdServer(
     cacheDir: path.resolve(tempDir, ".vite"),
     plugins: [
       ...(modernOnly ? [] : [vitePluginLegacy()]),
-      vitePluginWasm(),
+      vitePluginWasm_ ? vitePluginWasm_() : vitePluginWasm(),
       ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
     ],
     logLevel: "error"
