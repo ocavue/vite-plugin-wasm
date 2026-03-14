@@ -1,0 +1,38 @@
+import path from "path";
+import type { ResolvedConfig, Plugin  } from "vite";
+import { createRequire } from "module";
+
+import * as wasmHelper from "./wasm-helper.js";
+import { generateGlueCode } from "./wasm-parser.js";
+import { createBase64UriForWasm } from "./util.js";
+
+type RolldownOptions = ResolvedConfig["optimizeDeps"]["rolldownOptions"];
+type RolldownPlugins =  Awaited<RolldownOptions["plugins"]>;
+type RolldownPlugin = Exclude<RolldownPlugins, false>
+
+export function esbuildPlugin(): Plugin {
+  return {
+    name: "vite-plugin-wasm-v2",
+//     setup(build) {
+//       const NAMESPACE = "vite-plugin-wasm-namespace";
+
+//       build.onResolve({ filter: /\.wasm$/ }, args => ({
+//         path: createRequire(args.importer).resolve(args.path),
+//         namespace: NAMESPACE
+//       }));
+
+//       build.onLoad({ filter: /.*/, namespace: NAMESPACE }, async args => {
+//         const dataUri = await createBase64UriForWasm(args.path);
+//         return {
+//           contents: `
+// const wasmUrl = "${dataUri}";
+// const initWasm = ${wasmHelper.code};
+// ${await generateGlueCode(args.path, { initWasm: "initWasm", wasmUrl: "wasmUrl" })}
+// `,
+//           loader: "js",
+//           resolveDir: path.dirname(args.path)
+//         };
+//       });
+//     }
+  };
+}

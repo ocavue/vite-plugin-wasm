@@ -1,0 +1,1538 @@
+yarn run v1.22.22
+$ yarn --cwd e2e && playwright install firefox && playwright install chromium
+[1/4] Resolving packages...
+(node:86128) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+$ yarn --cwd vite2 && yarn --cwd vite3 && yarn --cwd vite4 && yarn --cwd vite5 && yarn --cwd vite6 && yarn --cwd vite7 && yarn --cwd vite8
+[1/4] Resolving packages...
+(node:86140) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+$ patch-package
+patch-package 6.5.1
+Applying patches...
+vite@2.9.18 ✔
+[1/4] Resolving packages...
+(node:86165) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+[1/4] Resolving packages...
+(node:86176) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+[1/4] Resolving packages...
+(node:86188) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+[1/4] Resolving packages...
+(node:86199) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+$ patch-package
+patch-package 8.0.0
+Applying patches...
+vite@6.0.4 ✔
+[1/4] Resolving packages...
+(node:86218) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+[1/4] Resolving packages...
+(node:86230) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+success Already up-to-date.
+$ cross-env NODE_NO_WARNINGS=1 NODE_OPTIONS=--experimental-vm-modules jest --verbose --coverage --forceExit ./e2e/vite8
+  console.log
+    viteMajorVersion: 8
+
+      at log (src/index.ts:11:9)
+
+  console.error
+    ✗ Build failed in 12ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 2ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 2ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 0ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 2ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:253:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 0ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:257:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 0ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 0ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 1ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    ✗ Build failed in 0ms
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at output (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:283:24)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/logger.js:304:4)
+      at Object.error (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:20066:34)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32802:11)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+  console.error
+    Error during Vite build: Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+        at RolldownBuild.#build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+        at buildEnvironment (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+        at Object.build (/workspaces/vite-plugin-wasm/e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+        at buildAndStartProdServer (/workspaces/vite-plugin-wasm/e2e/e2e.ts:72:25)
+        at runTest (/workspaces/vite-plugin-wasm/e2e/e2e.ts:175:18)
+        at runTestWithRetry (/workspaces/vite-plugin-wasm/e2e/e2e.ts:218:7)
+        at Object.<anonymous> (/workspaces/vite-plugin-wasm/e2e/e2e.ts:261:7) {
+      code: 'InvalidArg'
+    }
+
+      86 |     result = buildResult;
+      87 |   } catch (e) {
+    > 88 |     console.error("Error during Vite build:", e);
+         |             ^
+      89 |     throw e;
+      90 |   }
+      91 |
+
+      at error (e2e/e2e.ts:88:13)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+FAIL e2e/vite8/e2e-vite8.test.ts (38.106 s)
+  E2E test for Vite 8
+    ✕ vite 8: should work on modern browser in Vite dev server (9158 ms)
+    ✕ vite 8: should work on modern browser without top-level await transform (9087 ms)
+    ✕ vite 8: should work on modern browser with top-level await transform (9062 ms)
+    ✕ vite 8: should work on legacy browser (9060 ms)
+
+  ● E2E test for Vite 8 › vite 8: should work on modern browser in Vite dev server
+
+    Value is non of these types `String`, `RegExp`,  on BindingViteResolvePluginConfig.builtins
+
+      133 |   const { vite } = vitePackages;
+      134 |
+    > 135 |   const devServer = await vite.createServer({
+          |                     ^
+      136 |     root: __dirname,
+      137 |     plugins: [vitePluginWasm()],
+      138 |     cacheDir: path.resolve(tempDir, ".vite"),
+
+      at makeBuiltinPluginCallable (e2e/vite8/node_modules/rolldown/dist/shared/normalize-string-or-regex-C5RWbu3O.mjs:14:23)
+      at viteResolvePlugin (e2e/vite8/node_modules/rolldown/dist/shared/constructors-Ctal_Rbv.mjs:32:9)
+      at e2e/vite8/node_modules/vite/dist/node/chunks/node.js:31837:18
+      at Object.applyToEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:31819:11)
+      at resolveEnvironmentPlugins (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:2531:33)
+      at resolveConfig (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:34258:95)
+      at _createServer (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:25872:65)
+      at startDevServer (e2e/e2e.ts:135:21)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:249:7)
+
+  ● E2E test for Vite 8 › vite 8: should work on modern browser without top-level await transform
+
+    Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at RolldownBuild.#build (e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:253:7)
+
+  ● E2E test for Vite 8 › vite 8: should work on modern browser with top-level await transform
+
+    Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at RolldownBuild.#build (e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:257:7)
+
+  ● E2E test for Vite 8 › vite 8: should work on legacy browser
+
+    Value is non of these types `BindingPluginOptions`, `BindingBuiltinPlugin`,  on BindingInputOptions.plugins on BindingBundlerOptions.inputOptions
+
+      70 |
+      71 |   try {
+    > 72 |     const buildResult = await vite.build({
+         |                         ^
+      73 |       root: __dirname,
+      74 |       build: {
+      75 |         target: "esnext",
+
+      at RolldownBuild.#build (e2e/vite8/node_modules/rolldown/dist/shared/rolldown-build-4YnQkA76.mjs:3309:46)
+      at buildEnvironment (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:32794:64)
+      at Object.build (e2e/vite8/node_modules/vite/dist/node/chunks/node.js:33216:19)
+      at buildAndStartProdServer (e2e/e2e.ts:72:25)
+      at runTest (e2e/e2e.ts:175:18)
+      at runTestWithRetry (e2e/e2e.ts:218:7)
+      at Object.<anonymous> (e2e/e2e.ts:261:7)
+
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   12.65 |        0 |      12 |   11.84 |                   
+ esbuild-plugin.ts |       0 |      100 |       0 |       0 | 13-25             
+ index.ts          |   33.33 |        0 |      60 |      30 | 25-58             
+ util.ts           |       0 |      100 |       0 |       0 | 4-5               
+ wasm-helper.ts    |     100 |      100 |     100 |     100 |                   
+ wasm-parser.ts    |    2.12 |        0 |       0 |    2.17 | 12-109,117-186    
+-------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 1 total
+Tests:       4 failed, 4 total
+Snapshots:   0 total
+Time:        38.225 s, estimated 39 s
+Ran all test suites matching /.\/e2e\/vite8/i.
+Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
