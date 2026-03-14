@@ -63,7 +63,7 @@ type VitePackages =
       // depend on "rollup" anymore.
       // See https://github.com/Menci/vite-plugin-top-level-await/blob/v1.6.0/src/index.ts#L3
       vitePluginTopLevelAwait?: undefined;
-      vitePluginWasm?: typeof import("../src/index.js")["default"];
+      vitePluginWasm?: (typeof import("../src/index.js"))["default"];
     };
 
 async function buildAndStartProdServer(
