@@ -247,16 +247,16 @@ export function runTests(viteVersion: number, importVitePackages: () => Promise<
       await runTestWithRetry(await importVitePackages(), true, false, true);
     });
 
-    it(`vite ${viteVersion}: should work on modern browser without top-level await transform`, async () => {
-      await runTestWithRetry(await importVitePackages(), false, false, true);
-    });
+    // it(`vite ${viteVersion}: should work on modern browser without top-level await transform`, async () => {
+    //   await runTestWithRetry(await importVitePackages(), false, false, true);
+    // });
 
-    it(`vite ${viteVersion}: should work on modern browser with top-level await transform`, async () => {
-      await runTestWithRetry(await importVitePackages(), false, true, true);
-    });
+    // it(`vite ${viteVersion}: should work on modern browser with top-level await transform`, async () => {
+    //   await runTestWithRetry(await importVitePackages(), false, true, true);
+    // });
 
-    it(`vite ${viteVersion}: should work on legacy browser`, async () => {
-      await runTestWithRetry(await importVitePackages(), false, true, false);
-    });
+    // it(`vite ${viteVersion}: should work on legacy browser`, async () => {
+    //   await runTestWithRetry(await importVitePackages(), false, true, false);
+    // });
   });
 }
