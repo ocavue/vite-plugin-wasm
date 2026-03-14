@@ -8,6 +8,9 @@ import { createBase64UriForWasm } from "./util";
 
 const [viteMajorVersion] = version.split(".").map(Number);
 
+console.log(
+  "viteMajorVersion:", viteMajorVersion)
+
 export default function wasm(): any {
   // Vitest reports { ssr: false } to plugins but execute the code in SSR
   // Detect Vitest with the existance of plugin with the name "vitest"
@@ -19,16 +22,17 @@ export default function wasm(): any {
       runningInVitest = config.plugins.some(plugin => plugin.name === "vitest");
 
       if (viteMajorVersion <= 7) {
-      if (config.optimizeDeps?.esbuildOptions) {
-        // https://github.com/Menci/vite-plugin-wasm/pull/11
-        if (!config.optimizeDeps.esbuildOptions.plugins) {
-          config.optimizeDeps.esbuildOptions.plugins = [];
-        }
-        config.optimizeDeps.esbuildOptions.plugins.push(esbuildPlugin());
+        if (config.optimizeDeps?.esbuildOptions) {
+          // https://github.com/Menci/vite-plugin-wasm/pull/11
+          if (!config.optimizeDeps.esbuildOptions.plugins) {
+            config.optimizeDeps.esbuildOptions.plugins = [];
+          }
+          config.optimizeDeps.esbuildOptions.plugins.push(esbuildPlugin());
 
-        // Allow usage of top-level await during development build (not affacting the production build)
-        config.optimizeDeps.esbuildOptions.target = "esnext";
-      }}
+          // Allow usage of top-level await during development build (not affacting the production build)
+          config.optimizeDeps.esbuildOptions.target = "esnext";
+        }
+      }
     },
     resolveId(id) {
       if (id === wasmHelper.id) {
