@@ -6,7 +6,6 @@
   "private": true,
   "devDependencies": {
     "@vitejs/plugin-legacy": "^8",
-    "vite": "8",
-    "vite-plugin-wasm": "../vite-plugin-wasm.tgz"
+    "vite": "8"
   }
 }

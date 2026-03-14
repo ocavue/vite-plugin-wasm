@@ -1386,10 +1386,6 @@ update-browserslist-db@^1.2.0:
     escalade "^3.2.0"
     picocolors "^1.1.1"
 
-vite-plugin-wasm@../vite-plugin-wasm.tgz:
-  version "3.5.0"
-  resolved "../vite-plugin-wasm.tgz#d0ab7eb7e5b0ef92dffd65d4d0b1d5108020e5aa"
-
 vite@8:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/vite/-/vite-8.0.0.tgz#d749f9bf5be196635982bc16ec0c6faf2b31f3a4"
