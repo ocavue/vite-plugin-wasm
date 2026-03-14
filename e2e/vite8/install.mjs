@@ -28,10 +28,7 @@ function run() {
     fs.rmdirSync(dest, { recursive: true });
   }
   fs.mkdirSync(dest, { recursive: true });
-  fs.copyFileSync(
-    path.join(root, "package.json"),
-    path.join(dest, "package.json"),
-  );
+  fs.copyFileSync(path.join(root, "package.json"), path.join(dest, "package.json"));
   copyDirSync(path.join(root, "exports"), path.join(dest, "exports"));
   copyDirSync(path.join(root, "dist"), path.join(dest, "dist"));
 }
