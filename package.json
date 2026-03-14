@@ -42,6 +42,7 @@
     "@syntect/wasm": "^0.0.4",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
+    "@types/node": "^24.12.0",
     "@wasm-fmt/gofmt": "0.7.3",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
@@ -54,12 +55,12 @@
     "prettier": "^3.4.2",
     "terser": "^5.37.0",
     "ts-jest": "^29.2.5",
-    "typescript": "^5.7.2",
-    "vite": "7",
+    "typescript": "^5.9.3",
+    "vite": "8",
     "wait-port": "^1.1.0"
   },
   "peerDependencies": {
-    "vite": "^2 || ^3 || ^4 || ^5 || ^6 || ^7"
+    "vite": "^2 || ^3 || ^4 || ^5 || ^6 || ^7 || ^8"
   },
   "config": {
     "commitizen": {
