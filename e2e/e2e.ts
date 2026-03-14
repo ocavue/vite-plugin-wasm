@@ -1,12 +1,12 @@
-/// <reference types="jest-extended" />
 /* istanbul ignore file */
 
 import path from "path";
 import url from "url";
 import fs from "fs";
+import { describe, it } from "node:test";
+import assert from "node:assert";
 import type { AddressInfo } from "net";
 
-import { jest } from "@jest/globals";
 import { firefox, chromium } from "playwright";
 
 import vitePluginWasm from "../dist/index.js";
@@ -205,7 +205,7 @@ async function runTest(
     });
   });
 
-  expect(foundLog).toEqual(expectedLog);
+  assert.strictEqual(foundLog, expectedLog);
 }
 
 // Vite 2 dev server test often fails with RequestError. Let's retry.
@@ -230,9 +230,7 @@ const runTestWithRetry = async (...args: Parameters<typeof runTest>) => {
 };
 
 export function runTests(viteVersion: number, importVitePackages: () => Promise<VitePackages>) {
-  jest.setTimeout(600000);
-
-  describe(`E2E test for Vite ${viteVersion}`, () => {
+  describe(`E2E test for Vite ${viteVersion}`, { timeout: 600000 }, () => {
     const nodeVersion = Number(process.versions.node.split(".")[0]);
 
     if (viteVersion >= 7 && nodeVersion < 20) {
