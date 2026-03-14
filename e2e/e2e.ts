@@ -67,27 +67,27 @@ async function buildAndStartProdServer(
   const { vite, vitePluginLegacy, vitePluginTopLevelAwait } = vitePackages;
 
   let result: Awaited<ReturnType<typeof vite.build>>;
-  
+
   try {
-  const buildResult = await vite.build({
-    root: __dirname,
-    build: {
-      target: "esnext",
-      outDir: path.resolve(tempDir, "dist")
-    },
-    cacheDir: path.resolve(tempDir, ".vite"),
-    plugins: [
-      ...(modernOnly ? [] : [vitePluginLegacy()]),
-      vitePluginWasm(),
-      ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
-    ],
-    logLevel: "error"
-  });
-  result = buildResult
-} catch (e) {
-  console.error("Error during Vite build:", e);
-  throw e;
-}
+    const buildResult = await vite.build({
+      root: __dirname,
+      build: {
+        target: "esnext",
+        outDir: path.resolve(tempDir, "dist")
+      },
+      cacheDir: path.resolve(tempDir, ".vite"),
+      plugins: [
+        ...(modernOnly ? [] : [vitePluginLegacy()]),
+        vitePluginWasm(),
+        ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
+      ],
+      logLevel: "error"
+    });
+    result = buildResult;
+  } catch (e) {
+    console.error("Error during Vite build:", e);
+    throw e;
+  }
 
   if ("close" in result) {
     throw new TypeError("Internal error in Vite");
