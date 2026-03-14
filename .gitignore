@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
-vite-plugin-wasm.tgz
+vite-plugin-wasm*.tgz

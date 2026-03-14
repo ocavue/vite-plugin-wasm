@@ -1386,9 +1386,9 @@ update-browserslist-db@^1.2.0:
     escalade "^3.2.0"
     picocolors "^1.1.1"
 
-vite-plugin-wasm@../vite-plugin-wasm.tgz:
+vite-plugin-wasm@../vite-plugin-wasm-temp.tgz:
   version "3.5.0"
-  resolved "../vite-plugin-wasm.tgz#d0ab7eb7e5b0ef92dffd65d4d0b1d5108020e5aa"
+  resolved "../vite-plugin-wasm-temp.tgz#33f56e2102445f6a8c3d5031af9e9106a05ccf0e2ceeb58e0279619806f7c774db50dd83775e286e412f977eaa27f4f53d1193035e1c6d514688a5f87dbec7f7"
 
 vite@8:
   version "8.0.0"
