@@ -9,8 +9,6 @@ import type { AddressInfo } from "net";
 import { jest } from "@jest/globals";
 import { firefox, chromium } from "playwright";
 
-import vitePluginWasm from "../src/index.js";
-
 import express from "express";
 import waitPort from "wait-port";
 import mime from "mime";
@@ -66,13 +64,24 @@ type VitePackages =
       vitePluginWasm?: (typeof import("../src/index.js"))["default"];
     };
 
+async function loadVitePluginWasm(vitePackages: VitePackages) { 
+  const { vitePluginWasm: localVitePluginWasm } = vitePackages;
+
+  if (localVitePluginWasm) {
+    return localVitePluginWasm;
+  }
+  const mod = await import ("../dist/index.js")
+  return mod.default 
+}
+
 async function buildAndStartProdServer(
   tempDir: string,
   vitePackages: VitePackages,
   transformTopLevelAwait: boolean,
   modernOnly: boolean
 ): Promise<string> {
-  const { vite, vitePluginLegacy, vitePluginTopLevelAwait, vitePluginWasm: localVitePluginWasm } = vitePackages;
+  const { vite, vitePluginLegacy, vitePluginTopLevelAwait } = vitePackages;
+  const vitePluginWasm = await loadVitePluginWasm(vitePackages);
 
   const result = await vite.build({
     root: __dirname,
@@ -83,7 +92,7 @@ async function buildAndStartProdServer(
     cacheDir: path.resolve(tempDir, ".vite"),
     plugins: [
       ...(modernOnly ? [] : [vitePluginLegacy()]),
-      localVitePluginWasm ? localVitePluginWasm() : vitePluginWasm(),
+      vitePluginWasm(),
       ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
     ],
     logLevel: "error"
@@ -130,11 +139,12 @@ async function buildAndStartProdServer(
 }
 
 async function startDevServer(tempDir: string, vitePackages: VitePackages): Promise<string> {
-  const { vite, vitePluginWasm: localVitePluginWasm } = vitePackages;
+  const { vite } = vitePackages;
+  const vitePluginWasm = await loadVitePluginWasm(vitePackages);
 
   const devServer = await vite.createServer({
     root: __dirname,
-    plugins: [localVitePluginWasm ? localVitePluginWasm() : vitePluginWasm()],
+    plugins: [vitePluginWasm()],
     cacheDir: path.resolve(tempDir, ".vite"),
     logLevel: "error"
   });
