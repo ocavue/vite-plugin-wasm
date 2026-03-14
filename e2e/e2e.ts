@@ -55,7 +55,7 @@ type VitePackages =
       // "vite-plugin-top-level-await" v1.6.0 doesn't support Vite 8 because it imports "rollup" directly. But "vite" v8 doesn't
       // depend on "rollup" anymore.
       // See https://github.com/Menci/vite-plugin-top-level-await/blob/v1.6.0/src/index.ts#L3
-      vitePluginTopLevelAwait: undefined;
+      vitePluginTopLevelAwait?: undefined;
     };
 
 async function buildAndStartProdServer(
