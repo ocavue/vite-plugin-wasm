@@ -1,5 +1,5 @@
 import type { Plugin } from "vite";
-import { version } from "vite";
+import { version } from "vite"   
 
 import { esbuildPlugin } from "./esbuild-plugin";
 import { generateGlueCode } from "./wasm-parser";
