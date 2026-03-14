@@ -52,7 +52,8 @@ type VitePackages =
   | {
       vite: typeof import("./vite8/node_modules/vite/dist/node/index.js");
       vitePluginLegacy: (typeof import("./vite8/node_modules/@vitejs/plugin-legacy/dist/index.js"))["default"];
-      vitePluginTopLevelAwait: (typeof import("./vite8/node_modules/vite-plugin-top-level-await"))["default"];
+      // vite-plugin-top-level-await v1.6.0 doesn't support Vite 8
+      vitePluginTopLevelAwait: undefined
     };
 
 async function buildAndStartProdServer(
@@ -73,7 +74,7 @@ async function buildAndStartProdServer(
     plugins: [
       ...(modernOnly ? [] : [vitePluginLegacy()]),
       vitePluginWasm(),
-      ...(transformTopLevelAwait ? [vitePluginTopLevelAwait()] : [])
+      ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
     ],
     logLevel: "error"
   });
