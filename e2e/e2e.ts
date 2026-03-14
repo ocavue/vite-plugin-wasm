@@ -72,7 +72,7 @@ async function buildAndStartProdServer(
   transformTopLevelAwait: boolean,
   modernOnly: boolean
 ): Promise<string> {
-  const { vite, vitePluginLegacy, vitePluginTopLevelAwait, vitePluginWasm: vitePluginWasm_ } = vitePackages;
+  const { vite, vitePluginLegacy, vitePluginTopLevelAwait, vitePluginWasm: localVitePluginWasm } = vitePackages;
 
   const result = await vite.build({
     root: __dirname,
@@ -83,7 +83,7 @@ async function buildAndStartProdServer(
     cacheDir: path.resolve(tempDir, ".vite"),
     plugins: [
       ...(modernOnly ? [] : [vitePluginLegacy()]),
-      vitePluginWasm_ ? vitePluginWasm_() : vitePluginWasm(),
+      localVitePluginWasm ? localVitePluginWasm() : vitePluginWasm(),
       ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
     ],
     logLevel: "error"
@@ -130,11 +130,11 @@ async function buildAndStartProdServer(
 }
 
 async function startDevServer(tempDir: string, vitePackages: VitePackages): Promise<string> {
-  const { vite } = vitePackages;
+  const { vite, vitePluginWasm: localVitePluginWasm } = vitePackages;
 
   const devServer = await vite.createServer({
     root: __dirname,
-    plugins: [vitePluginWasm()],
+    plugins: [localVitePluginWasm ? localVitePluginWasm() : vitePluginWasm()],
     cacheDir: path.resolve(tempDir, ".vite"),
     logLevel: "error"
   });
