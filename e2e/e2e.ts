@@ -66,7 +66,10 @@ async function buildAndStartProdServer(
 ): Promise<string> {
   const { vite, vitePluginLegacy, vitePluginTopLevelAwait } = vitePackages;
 
-  const result = await vite.build({
+  let result: Awaited<ReturnType<typeof vite.build>>;
+  
+  try {
+  const buildResult = await vite.build({
     root: __dirname,
     build: {
       target: "esnext",
@@ -80,6 +83,11 @@ async function buildAndStartProdServer(
     ],
     logLevel: "error"
   });
+  result = buildResult
+} catch (e) {
+  console.error("Error during Vite build:", e);
+  throw e;
+}
 
   if ("close" in result) {
     throw new TypeError("Internal error in Vite");
