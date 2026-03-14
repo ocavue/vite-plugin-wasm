@@ -20,17 +20,17 @@ function copyDirSync(src, dest) {
 }
 
 function run() {
-  const __dirname = path.dirname(fileURLToPath(import.meta.url));
-  const dest = path.join(__dirname, "node_modules", "vite-plugin-wasm");
-  const root = path.resolve(__dirname, "..", "..");
+  // const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  // const dest = path.join(__dirname, "node_modules", "vite-plugin-wasm");
+  // const root = path.resolve(__dirname, "..", "..");
 
-  if (fs.existsSync(dest)) {
-    fs.rmdirSync(dest, { recursive: true });
-  }
-  fs.mkdirSync(dest, { recursive: true });
-  fs.copyFileSync(path.join(root, "package.json"), path.join(dest, "package.json"));
-  copyDirSync(path.join(root, "exports"), path.join(dest, "exports"));
-  copyDirSync(path.join(root, "dist"), path.join(dest, "dist"));
+  // if (fs.existsSync(dest)) {
+  //   fs.rmdirSync(dest, { recursive: true });
+  // }
+  // fs.mkdirSync(dest, { recursive: true });
+  // fs.copyFileSync(path.join(root, "package.json"), path.join(dest, "package.json"));
+  // copyDirSync(path.join(root, "exports"), path.join(dest, "exports"));
+  // copyDirSync(path.join(root, "dist"), path.join(dest, "dist"));
 }
 
 run();
