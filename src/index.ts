@@ -1,10 +1,10 @@
 import type { Plugin } from "vite";
 import { version } from "vite"   
 
-import { esbuildPlugin } from "./esbuild-plugin";
-import { generateGlueCode } from "./wasm-parser";
-import * as wasmHelper from "./wasm-helper";
-import { createBase64UriForWasm } from "./util";
+import { esbuildPlugin } from "./esbuild-plugin.js";
+import { generateGlueCode } from "./wasm-parser.js";
+import * as wasmHelper from "./wasm-helper.js";
+import { createBase64UriForWasm } from "./util.js";
 
 const [viteMajorVersion] = version.split(".").map(Number);
 

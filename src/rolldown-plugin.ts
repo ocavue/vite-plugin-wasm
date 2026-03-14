@@ -2,9 +2,9 @@ import path from "path";
 import type { ResolvedConfig, Plugin  } from "vite";
 import { createRequire } from "module";
 
-import * as wasmHelper from "./wasm-helper";
-import { generateGlueCode } from "./wasm-parser";
-import { createBase64UriForWasm } from "./util";
+import * as wasmHelper from "./wasm-helper.js";
+import { generateGlueCode } from "./wasm-parser.js";
+import { createBase64UriForWasm } from "./util.js";
 
 type RolldownOptions = ResolvedConfig["optimizeDeps"]["rolldownOptions"];
 type RolldownPlugins =  Awaited<RolldownOptions["plugins"]>;
