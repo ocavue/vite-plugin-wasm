@@ -79,7 +79,7 @@ async function buildAndStartProdServer(
       plugins: [
         ...(modernOnly ? [] : [vitePluginLegacy()]),
         vitePluginWasm(),
-        ...(transformTopLevelAwait ? [vitePluginTopLevelAwait?.()] : [])
+        ...((transformTopLevelAwait && vitePluginTopLevelAwait) ? [vitePluginTopLevelAwait()] : [])
       ],
       logLevel: "error"
     });
