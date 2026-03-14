@@ -6,12 +6,9 @@
   "private": true,
   "devDependencies": {
     "@vitejs/plugin-legacy": "^8",
-    "vite": "8",
-    "cpy-cli": "^5.0.0",
-    "make-dir-cli": "^3.1.0",
-    "rimraf": "^5.0.0"
+    "vite": "8"
   },
   "scripts": {
-    "install": "rimraf node_modules/vite-plugin-wasm && make-dir node_modules/vite-plugin-wasm && cpy --cwd ../.. package.json node_modules/vite-plugin-wasm/ && cpy --cwd ../.. exports node_modules/vite-plugin-wasm/ && cpy --cwd ../.. dist node_modules/vite-plugin-wasm/"
+    "install": "node install.mjs"
   }
 }
