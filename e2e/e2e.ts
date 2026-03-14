@@ -64,14 +64,14 @@ type VitePackages =
       vitePluginWasm?: (typeof import("../src/index.js"))["default"];
     };
 
-async function loadVitePluginWasm(vitePackages: VitePackages) { 
+async function loadVitePluginWasm(vitePackages: VitePackages) {
   const { vitePluginWasm: localVitePluginWasm } = vitePackages;
 
   if (localVitePluginWasm) {
     return localVitePluginWasm;
   }
-  const mod = await import ("../dist/index.js")
-  return mod.default 
+  const mod = await import("../dist/index.js");
+  return mod.default;
 }
 
 async function buildAndStartProdServer(
