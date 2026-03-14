@@ -9,7 +9,7 @@ import type { AddressInfo } from "net";
 import { jest } from "@jest/globals";
 import { firefox, chromium } from "playwright";
 
-import vitePluginWasm from "../src/index.js";
+import vitePluginWasm from "../dist/index.js";
 
 import express from "express";
 import waitPort from "wait-port";
