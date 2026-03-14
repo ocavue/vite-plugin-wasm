@@ -70,7 +70,7 @@ async function loadVitePluginWasm(vitePackages: VitePackages) {
   if (localVitePluginWasm) {
     return localVitePluginWasm;
   }
-  const mod = await import("../dist/index.js");
+  const mod = await import("../exports/import.mjs");
   return mod.default;
 }
 
